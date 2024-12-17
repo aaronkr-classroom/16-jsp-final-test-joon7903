@@ -1,0 +1,12 @@
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>Protected Area</web-resource-name>
+        <!-- 보호할 URL 패턴 -->
+        <url-pattern>/secure/*</url-pattern>
+    </web-resource-collection>
+
+    <!-- 인증 요구사항 -->
+    <auth-constraint>
+        <role-name>user</role-name>
+    </auth-constraint>
+</security-constraint>

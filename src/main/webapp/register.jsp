@@ -5,6 +5,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<script type = "text/javascript">
+    function checkMember(){
+    	
+    	var regExpID=/^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    	var regExpName=/^[가-힣]*$/;
+    	var regExpPasswd=/^[0-9]*$/;
+    	var regExpPhone=/^\d{3}-\d{3,4}-\d{4}$/;
+    	var regExpEmail=/^[0-9a-zA-z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    	
+    	var form=document.Member;
+    	
+    	var id=form.id.value;
+    	var name = form.name.value;
+    	var passwd = form.passwd.value;
+    	var phone = form.phone1.value + "-" + form.phone2.value + "-" + form.phone3.value;
+    	var email = form.email.value;
+    	
+    	if(!regExpId.test(id)) {
+    		alert("아이디는 문자로 시작해주세요!");
+    		form.id.select();
+    		return;
+    	}
+    	if(!regExpname.text(name)){
+    		alert("이름은 한글만 입력해주세요!");
+    		return;
+    	}
+    	if(!regEmail.text(email)){
+    		alert("이메일 입력을 확인해주세요!");
+    		return;
+    	}
+   		form.submit();
+	    
+    }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>UT-NodeJS 중간고사 | Register</title>
@@ -13,41 +47,60 @@
     <meta name="author" content="???" />
     <meta name="description" content="???" />
 
-    <!-- CSS 파일에 대한 link테그를 수정하십시오 -->
+    <!-- CSS 파일에 대한 link 태그를 수정하십시오 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css" />
     <link
       rel="stylesheet"
       media="(max-width: 768px)"
       href="${pageContext.request.contextPath}/public/css/style.small.css"
-    />
-    <link href="${pageContext.request.contextPath}/public/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/confetti.css" />
+      />
+   <link href="${pageContext.request.contextPath}/public/css/bootstrap.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/confetti.css" />
 
-    <!-- JS 파일에 대한 script테그를 수정하십시오 -->
-    <script defer src="${pageContext.request.contextPath}/public/js/functions.js"></script>
-  </head>
+    <!-- JS 파일에 대한 script 태그를 수정하십시오 -->
+ <script defer src="${pageContext.request.contextPath}/public/js/functions.js"></script>
+ </head>
 
   <body>
-    <!-- HEADER -->
+     <!-- HEADER -->
 
     <jsp:include page="header.jsp"></jsp:include>
 
     <!-- MAIN 페이지 내용 -->
     <main class="">
       <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-lg-5 py-3">
-          <div class="col-lg-7 text-center text-lg-start mb-3">
-            <figure>
-              <img
-                src="https://cdn.pixabay.com/photo/2015/08/07/06/28/transportation-879026_960_720.jpg"
-              />
-            </figure>
-            <h1 class="display-4">Contact Us</h1>
-            <p class="lead col-lg-10 fs-4">Get in touch to find out more.</p>
-          </div>
+      <div class="container col-md-6 mx-auto mt-4">
+    <h2 class="text-center mb-3">Login</h2>
+ 	<form class="p-4 border rounded bg-light" action="login.jsp" method="POST">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="loginUsername"
+        name="username"
+        placeholder="Username"
+        required
+      />
+      <label for="loginUsername">name</label>
+    
+    
+</div>
 
-          <div class="col-md-10 mx-auto col-lg-5 mb-5">
-
+<div class="form-floating mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="loginPassword"
+        name="password"
+        placeholder="Password"
+        required
+      />
+      
+	<label for="loginPassword">Password</label>
+	</div>  
+	<button class="w-100 btn btn-primary" type="submit">Login</button>
+</form>
+</div>
             <!-- action 속성에서 맞는 파일 경로 입력하세요 -->
             <form
               class="p-4 p-md-5 border rounded-3 bg-light"
